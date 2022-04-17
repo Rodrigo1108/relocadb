@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,330;0,700;1,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css"/>
+</head>
+<body>
+    <style>
+        body{
+            margin-top: 100px;
+            background-image: url('images/fondo2.png');
+            font-family: 'Open Sans', sans-serif;
+        }
+        .form{
+            background-color: white;
+            border-radius: 15px;
+            width: 330px;
+            margin:auto;
+            padding:15px;
+        }
+        input{
+            background-color: bisque;
+            font-family: 'Open Sans', sans-serif;
+        }
+        .input-box{
+            font-size: 15px;
+            font-weight:501;
+        }
+        .input-box-content{
+            padding:5px;
+            font-size: 14px;
+            width: 320px;
+            height: 30px;
+            border-radius: 5px;
+            border:1px;
+        }
+        .boton{
+            cursor: pointer;
+            border:1px;
+            border-radius: 5px;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 16px;
+            padding:10px;
+            justify-content: space-evenly;
+        }
+        .boton:hover{
+            background-color: rgb(84, 168, 252);
+        }
+        #iconE{
+            cursor:pointer;
+            margin-top:8px;
+            margin-left:300px;
+            position: absolute;
+        }
+        a{
+            color:dodgerblue;
+            
+        }
+    </style>
+    <section class="form">
+        <form action="validar.php" method="post">
+            <p style="font-size:30px;text-align:center;color:dodgerblue;">Inicio de sesión</p>
+            <p>Usuario: </p>
+            <input class="input-box-content" name="usuario" type="text" placeholder="Ingresar usuario">
+            <p>Contraseña: </p>
+            <span class="iconE" id="iconE">
+                <i class="fa-solid fa-eye"></i>
+            </span>
+            <input class="input-box-content" name="contraseña" type="password" placeholder="Ingresar contraseña">
+            <p></p>
+            <center>
+                <input class="boton" type="submit" value="Ingresar">
+            </center>
+        </form>
+        <p>¿Aún no tienes una cuenta? <a href="FormRegistrarUsuario.html">Regístrate!</a></p>
+    </section>
+    <script>
+        window.watsonAssistantChatOptions = {
+          integrationID: "d0a6336e-b048-4330-899b-80362985e99f", // The ID of this integration.
+          region: "us-south", // The region your integration is hosted in.
+          serviceInstanceID: "56667069-cb26-40a4-8104-2ea02280d773", // The ID of your service instance.
+          showLauncher: false,//Delete icon
+          onLoad: function (instance) {
+            // Select the button element from the page.
+            const button = document.querySelector('.chatLauncher');
+    
+            // Add the event listener to open your web chat.
+            button.addEventListener('click', function clickListener() {
+              instance.openWindow();
+            });
+    
+            // Render the web chat. Nothing appears on the page, because the launcher is
+            // hidden and the web chat window is closed by default.
+            
+            instance.render().then(function () {
+              // Now that web chat has been rendered (but is still closed), we make the
+              // custom launcher button visible.
+              button.style.display = 'block';
+              button.classList.add('open');
+            });
+          }
+        };
+        setTimeout(function () {
+          const t = document.createElement('script');
+          t.src = "https://web-chat.global.assistant.watson.appdomain.cloud/versions/" + (window.watsonAssistantChatOptions.clientVersion || 'latest') + "/WatsonAssistantChatEntry.js"
+          document.head.appendChild(t);
+        });
+      </script>
+</body>
+
+<script>
+    const iconEye = document.querySelector(".iconE");
+    iconEye.addEventListener("click",function(){
+        const icon = this.querySelector("i");
+        if(this.nextElementSibling.type === "password"){
+            this.nextElementSibling.type = "text";
+            icon.classList.remove("fa-eye");
+            icon.classList.add("fa-eye-slash");
+        }else{
+            this.nextElementSibling.type = "password";
+            icon.classList.remove("fa-eye-slash");
+            icon.classList.add("fa-eye");
+        }
+    })
+</script>
+</html>

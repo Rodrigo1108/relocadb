@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,330;0,700;1,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css"/>
+    
+</head>
+<body>
+    <style>
+        form i{
+            margin-left: -30px;
+            cursor: pointer;
+        }
+        body{
+            background-image: url('images/fondo2.png');
+            font-family: 'Open Sans', sans-serif;
+        }
+        .form{
+            background-color: white;
+            border-radius: 15px;
+            width: 330px;
+            margin:auto;
+            padding:15px;
+        }
+        input{
+            background-color: bisque;
+            font-family: 'Open Sans', sans-serif;
+        }
+        .input-box{
+            font-size: 15px;
+            font-weight:501;
+        }
+        .input-box-content{
+            padding:5px;
+            font-size: 14px;
+            width: 320px;
+            height: 30px;
+            border-radius: 5px;
+            border:1px;
+        }
+        .boton{
+            background-color: bisque;
+            border:1px;
+            border-radius: 5px;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 16px;
+            padding:10px;
+            justify-content: space-evenly;
+        }
+        .buttonI,.buttonD{
+            cursor: pointer;
+            border:1px;
+            border-radius: 5px;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 16px;
+            padding:10px;
+            justify-content: space-evenly;
+        }
+        .buttonI{
+            margin-top:15px;
+            background-color: rgb(142, 198, 255);
+        }
+        .buttonD{
+            margin-top:8px;
+            background-color: rgba(119, 118, 118, 0.938);
+        }
+        .buttonI:hover{
+            background-color: rgb(84, 168, 252);
+        }
+        .buttonD:hover{
+            background-color: rgba(85, 85, 85, 0.938);
+        }
+        a{
+            font-family: 'Open Sans', sans-serif;
+            text-decoration: none;
+        }
+        a:visited{
+            color:black;
+        }
+        #iconE{
+            cursor:pointer;
+            margin-top:8px;
+            margin-left:330px;
+            position: absolute;
+        }
+    </style>
+    <section class="form">
+        <p style="font-size:30px;text-align:center;color:dodgerblue;margin-bottom: 0;">Regístrate</p>
+        <p style="font-size:16px;text-align:center;color:rgb(85, 85, 85);">(Es rápido y fácil)</p>
+        <form action="registro.php" id="formulario" >
+            <p>Ingresa tu nombre: </p>
+            <input class="input-box-content" name="Nombre" type="text" placeholder="Ingrese su nombre" required>
+            <p>Ingresa un nombre de usuario: </p>
+            <input class="input-box-content" name="User" type="text" placeholder="Ingrese un nombre de usuario" required>
+            <p>Ingresa una contraseña: </p>
+            <span class="iconE" id="iconE">
+                <i class="fa-solid fa-eye"></i>
+            </span>
+            <input class="input-box-content" id="Contraseña" name="Contraseña" type="password" placeholder="Ingrese una contraseña" pattern="(?=.*\d.*?\d)(?=.*[A-Z])(?=.*[#$%&/].*?[#$%&/])[A-Za-z\d#$%&/]{8,}" title="La contraseña debe tener al menos 8 letras, 2 números, 1 mayúscula y 2 caracteres como #$%&/?" required="">
+            <center>
+                <button class="buttonI" type="submit">Registrar</button>
+            </center>
+        </form>
+        <center>
+            <button class="buttonD"><a href="index.html">Atras</a></button>
+        </center>
+    </section>
+    
+</body>
+<script>
+    const iconEye = document.querySelector(".iconE");
+    iconEye.addEventListener("click",function(){
+        const icon = this.querySelector("i");
+        if(this.nextElementSibling.type === "password"){
+            this.nextElementSibling.type = "text";
+            icon.classList.remove("fa-eye");
+            icon.classList.add("fa-eye-slash");
+        }else{
+            this.nextElementSibling.type = "password";
+            icon.classList.remove("fa-eye-slash");
+            icon.classList.add("fa-eye");
+        }
+    })
+</script>
+</html>
